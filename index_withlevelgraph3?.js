@@ -1,14 +1,9 @@
-let home = process.env.HOME
-let db_path = home+"/.os/.universDB"
-// const { Level } = require('level')
-// const universDB     = new Level(path)
-
-const level   = require('level'),
-universDB     = level(db_path)
+const { Level } = require('level')
+const bloidDb = new Level('./BloidDb')
 levelgraph = require('levelgraph'),
 jsonld     = require('levelgraph-jsonld'),
 opts       = { base: 'http://scenaristeur.github.io/bloid' },
-db         = jsonld(levelgraph(universDB), opts);
+db         = jsonld(levelgraph(bloidDb), opts);
 
 
 var manu = {

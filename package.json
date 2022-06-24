@@ -9,8 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "level": "^8.0.0",
-    "levelgraph": "^3.0.0",
-    "levelgraph-jsonld": "^1.2.0"
+    "level": "^7.0.1",
+    "levelgraph-jsonld": "github:scenaristeur/levelgraph-jsonld#patch-1"
   }
 }

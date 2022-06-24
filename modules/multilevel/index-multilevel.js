@@ -1,14 +1,16 @@
-let home = process.env.HOME
-let db_path = home+"/.os/.universDB"
+var multilevel = require('multilevel');
+var net = require('net');
+//
 // const { Level } = require('level')
-// const universDB     = new Level(path)
+// const bloidDb = new Level('./BloidDb')
 
-const level   = require('level'),
-universDB     = level(db_path)
+const level = require('level')
+const bloidDb = level('./BloidDb')
+
 levelgraph = require('levelgraph'),
 jsonld     = require('levelgraph-jsonld'),
 opts       = { base: 'http://scenaristeur.github.io/bloid' },
-db         = jsonld(levelgraph(universDB), opts);
+db         = jsonld(levelgraph(bloidDb), opts);
 
 
 var manu = {
@@ -28,3 +30,7 @@ db.jsonld.put(manu, function(err, obj) {
   // do something after the obj is inserted
   console.log(err, obj)
 });
+
+net.createServer(function (con) {
+  con.pipe(multilevel.server(db)).pipe(con);
+}).listen(3000);

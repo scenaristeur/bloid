@@ -2,7 +2,14 @@ import { BloidCore } from '../index.js'
 import { assert } from 'chai';  // Using Assert style
 import { Config } from '../../bloid/config.js';
 
-let config = new Config({dbName: 'a db name', base: 'https://the_base_of_the_db'})
+let conf = {
+  dbName: 'a db name',
+  base: 'https://the_base_of_the_db',
+  filesystem_root: './fake_data',
+  debug: false
+}
+
+let config = new Config(conf)
 
 describe("bloid-core", function() {
   let core = new BloidCore({name: "CoolCore", config: config})
@@ -31,12 +38,17 @@ describe("bloid-core", function() {
   it("core filesystem.type should be 'filesystem'", function() {
     assert.equal(core.filesystem.type, 'filesystem');
   });
+
+  it("core filesystem.root should be './fake_data'", function() {
+    assert.equal(core.filesystem.root, './fake_data');
+  });
+
   it("core server.type should be 'server'", function() {
     assert.equal(core.server.type, 'server');
   });
 
-  it("core realtime.type should be 'realtime'", function() {
-    assert.equal(core.realtime.type, 'realtime');
+  it("core socket.type should be 'socket.io'", function() {
+    assert.equal(core.socket.type, 'socket.io');
   });
 
 });

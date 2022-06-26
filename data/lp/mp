@@ -1,0 +1,42 @@
+{
+  "model": {
+    "@context": {
+      "@vocab": "https://www.w3.org/ns/activitystreams",
+      "as": "https://www.w3.org/ns/activitystreams",
+      "ve": "https://scenaristeur.github.io/verse/",
+      "@id": "id",
+      "@type": "type"
+    },
+    "id": "aca06319-daf5-46b9-bfde-a35db189c271",
+    "ve:name": "mp",
+    "type": "thing",
+    "ve:age": -1,
+    "ve:properties": [],
+    "ve:actions": [],
+    "ve:links": [],
+    "ve:meta": {
+      "ve:created": 1656286927681
+    },
+    "ve:path": "data/lp/mp"
+  },
+  "data": {
+    "@context": {
+      "@vocab": "https://www.w3.org/ns/activitystreams",
+      "as": "https://www.w3.org/ns/activitystreams",
+      "ve": "https://scenaristeur.github.io/verse/",
+      "@id": "id",
+      "@type": "type"
+    },
+    "id": "aca06319-daf5-46b9-bfde-a35db189c271",
+    "ve:name": "mp",
+    "type": "thing",
+    "ve:age": -1,
+    "ve:properties": [],
+    "ve:actions": [],
+    "ve:links": [],
+    "ve:meta": {
+      "ve:created": 1656286927681
+    },
+    "ve:path": "data/lp/mp"
+  }
+}

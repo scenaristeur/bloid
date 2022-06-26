@@ -14,6 +14,7 @@ class Config extends Conf {
     console.log(this.options)
     this.set('db.name', options.dbName);
     this.set('db.base', options.base)
+    this.set('filesystem.root', options.filesystem_root)
     this.set('user.avatar', '🦄');
     this.set('user.name', process.env.USER || null)
     this.set('user.home', process.env.HOME || null)

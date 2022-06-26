@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bloid-template": "^0.0.1-alpha.0"
+    "bloid-realtime": "^0.0.1-alpha.0",
+    "bloid-template": "^0.0.1-alpha.0",
+    "open": "^8.4.0"
   },
   "keywords": [],
   "author": "",

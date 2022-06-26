@@ -7,7 +7,7 @@ import { BloidCommander } from 'bloid-commander'
 import { BloidData } from 'bloid-data'
 import { BloidFilesystem } from 'bloid-filesystem'
 // import { BloidModels } from 'bloid-models'
-import { BloidRealtime } from 'bloid-realtime'
+
 // import { BloidRepl } from 'bloid-repl'
 import { BloidServer } from 'bloid-server'
 
@@ -22,10 +22,16 @@ class BloidCore extends BloidTemplate{
     super(options)
     //this.config = new BloidConfig({core: this})
     this.commander = new BloidCommander({core: this})
-    this.filesystem = new BloidFilesystem({core: this})
-    this.data = new BloidData({core: this, name: this.config.get('db.name'), base: this.config.get('db.base')})
-    this.realtime = new BloidRealtime({core: this})
-    this.server = new BloidServer({core: this})
 
+    this.data = new BloidData({core: this, name: this.config.get('db.name'), base: this.config.get('db.base')})
+    this.server = new BloidServer({core: this})
+    this.filesystem = new BloidFilesystem({core: this, root: this.config.get('filesystem.root')})
+this.init()
+  }
+  init(){
+    //console.log(this.socket.io)
+    //this.filesystem.watcher.watch(this.socket.io.emit)
+    console.log(this.watcher)
+    this.watcher.look()
   }
 }

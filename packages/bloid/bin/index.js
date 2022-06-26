@@ -4,8 +4,14 @@
 let debug = false
 import { Config } from '../config.js';
 import { BloidCore } from 'bloid-core'
+let conf = {
+  dbName: 'universDB',
+  base: 'https://scenaristeur.github.io/bloid',
+  filesystem_root: './data',
+  debug: debug
+}
 
-let config = new Config({dbName: 'universDB', base: 'https://scenaristeur.github.io/bloid', debug: debug})
+let config = new Config(conf)
 
 let core = new BloidCore({debug: debug, config: config})
 

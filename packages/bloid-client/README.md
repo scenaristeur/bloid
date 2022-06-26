@@ -1,5 +1,7 @@
 # bloid-client
 
+# see scenaristeur.github.io/vatch-vue
+
 ## Project setup
 ```
 npm install

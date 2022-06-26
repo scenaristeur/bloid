@@ -2,7 +2,8 @@ import { BloidCore } from '../index.js'
 import { assert } from 'chai';  // Using Assert style
 
 describe("bloid-core", function() {
-  let core = new BloidCore({name: "CoolCore"})
+    let core = new BloidCore({name: "CoolCore"})
+  // let core = new BloidCore({name: "CoolCore", debug: true})
 
   it("core name should be 'CoolCore'", function() {
     assert.equal(core.name, 'CoolCore');
@@ -18,6 +19,9 @@ describe("bloid-core", function() {
 
   it("core filesystem.type should be 'filesystem'", function() {
     assert.equal(core.filesystem.type, 'filesystem');
+  });
+  it("core server.type should be 'server'", function() {
+    assert.equal(core.server.type, 'server');
   });
 
   it("core realtime.type should be 'realtime'", function() {

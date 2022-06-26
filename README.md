@@ -14,8 +14,15 @@
 - Bloid should be real time, notify me one important event (socket.io, os )
 - Bloid should be local-first, and synch to any type of device (Solid, ipfs, gundb..., multilevel (not working yet)? )
 - Bloid should keep an history of actions (trellis ? ActivityPub ?), a versioning of objects (git-ipfs?)
+- intelligent comment un enfant qui apprend de zéro, le système s'adapte à son utilisateur et peut partager ses methodes apprises avec d'autres systèmes partenaires, apprendre d'eux... Progressive Neural network
 
-
+# access
+- bloid can be accessed via
+  - command line like os / installed on the system / https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
+  - forms like vatch-vue (socket.io)
+  - graph view like agent
+  - accessed with a widget on a smartphone / shareable webapp
+  - other
 
 bloid is a mix of vatch https://github.com/scenaristeur/vatch/ & levelgraph-jsonld https://github.com/levelgraph/levelgraph-jsonld & https://scenaristeur.github.io/agent
 
@@ -30,6 +37,11 @@ voir aussi multilevel pour exposer la base :
 - ou https://github.com/juliangruber/multilevel compatible websocket-stream & authentication
 
 - levelgraph-jsonld (tests/index-levelgraph-jsonld.js)
+
+
+# lerna js
+- tool for monorepos https://lerna.js.org/
+
 
 
 # fuse user space
@@ -86,3 +98,10 @@ db.jsonld.put(manu, function(err, obj) {
  - ipfs
  -  matrix-crdt
  - telegram bot api
+
+
+# sur vatch-vue
+- create folder ending with a slash
+`/data/Bloid/ + send` -> create a /data/Bloid folder
+- create file not ending with a slash
+`/data/Bloid/vatch + send` -> create a /data/Bloid/vatch file

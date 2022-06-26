@@ -1,25 +1,31 @@
 {
   "name": "bloid",
   "version": "1.0.0",
-  "private": true,
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "os": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js start",
     "install-g": "npm install -g ./"
-
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
-    "level": "^7.0.1",
-    "levelgraph-jsonld": "github:scenaristeur/levelgraph-jsonld#patch-1"
+    "bloid-core": "*"
   },
-  "devDependencies": {
-    "lerna": "^5.1.6",
-    "nx": "^14.3.6"
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "./build",
+          "./public/build"
+        ]
+      }
+    }
   }
 }

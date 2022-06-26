@@ -4,7 +4,7 @@ import { BloidCommander } from 'bloid-commander'
 // import { BloidCli } from 'bloid-cli'
 // import { BloidCommons } from 'bloid-commons'
 import { BloidConfig } from 'bloid-config'
-// import { BloidData } from 'bloid-data'
+import { BloidData } from 'bloid-data'
 import { BloidFilesystem } from 'bloid-filesystem'
 // import { BloidModels } from 'bloid-models'
 // import { BloidRealtime } from 'bloid-realtime'
@@ -19,6 +19,8 @@ class BloidCore extends BloidTemplate{
     this.type = "core"
     this.config = new BloidConfig({core: this})
     this.commander = new BloidCommander({core: this})
+    this.filesystem = new BloidFilesystem({core: this})
+    this.data = new BloidData({core: this})
 
   }
 }

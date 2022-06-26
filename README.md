@@ -42,6 +42,26 @@ voir aussi multilevel pour exposer la base :
 # lerna js
 - tool for monorepos https://lerna.js.org/
 
+# test
+```
+~/dev/bloid/packages/bloid-core$ npx lerna bootstrap
+
+~/dev/bloid/packages/bloid-core$ npm run test
+
+> bloid-core@0.0.1-alpha.0 test
+> mocha test
+
+  bloid-core
+    ✔ core name should be 'CoolCore'
+    ✔ core config.type should be 'config'
+    ✔ core commander.type should be 'commander'
+    ✔ core filesystem.type should be 'filesystem'
+
+
+  4 passing (5ms)
+
+```
+
 
 
 # fuse user space

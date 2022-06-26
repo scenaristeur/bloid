@@ -8,6 +8,6 @@ class BloidServer extends BloidTemplate{
       ...options
     };
     super(options)
-    console.log(this.core)
+    //console.log(this.core)
   }
 }

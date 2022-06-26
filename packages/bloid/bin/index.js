@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // minimal os tools
-let debug = true
+let debug = false
 import { Config } from '../config.js';
 import { BloidCore } from 'bloid-core'
 

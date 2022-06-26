@@ -44,5 +44,11 @@ class BloidData extends BloidTemplate{
       ...options
     };
     super(options)
+    console.log("config", this.name, this.base)
+    this.init()
+
+  }
+  init(){
+
   }
 }

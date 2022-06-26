@@ -23,7 +23,7 @@ class BloidCore extends BloidTemplate{
     //this.config = new BloidConfig({core: this})
     this.commander = new BloidCommander({core: this})
     this.filesystem = new BloidFilesystem({core: this})
-    this.data = new BloidData({core: this})
+    this.data = new BloidData({core: this, name: this.config.get('db.name'), base: this.config.get('db.base')})
     this.realtime = new BloidRealtime({core: this})
     this.server = new BloidServer({core: this})
 

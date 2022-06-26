@@ -8,11 +8,12 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "bloid-template": "^0.0.1-alpha.0",
     "bloid-commander": "^0.0.1-alpha.0",
-    "bloid-filesystem": "^0.0.1-alpha.0",
     "bloid-config": "^0.0.1-alpha.0",
-    "bloid-data": "^0.0.1-alpha.0"
+    "bloid-data": "^0.0.1-alpha.0",
+    "bloid-filesystem": "^0.0.1-alpha.0",
+    "bloid-template": "^0.0.1-alpha.0",
+    "bloid-realtime": "^0.0.1-alpha.0"
   },
   "keywords": [],
   "author": "",

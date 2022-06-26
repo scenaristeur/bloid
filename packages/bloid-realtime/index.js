@@ -3,7 +3,10 @@ export { BloidRealtime}
 
 class BloidRealtime extends BloidTemplate{
   constructor(options = {}) {
+    options = {
+      type: 'realtime',
+      ...options
+    };
     super(options)
-    this.type = "realtime"
   }
 }

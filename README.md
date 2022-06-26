@@ -1,5 +1,10 @@
 # bloid
 
+```
+npx lerna bootstrap
+npm run start
+```
+
 - Bloid allows you to manage your (meta)datas anf files between real life and virtual worlds.
 - My computer was a dumb machine, and we will learn together how to build a smart one.
 - Bloid is a user interface to manage your multiple verses.
@@ -18,11 +23,11 @@
 
 # access
 - bloid can be accessed via
-  - command line like os / installed on the system / https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
-  - forms like vatch-vue (socket.io)
-  - graph view like agent
-  - accessed with a widget on a smartphone / shareable webapp
-  - other
+- command line like os / installed on the system / https://www.twilio.com/blog/how-to-build-a-cli-with-node-js
+- forms like vatch-vue (socket.io)
+- graph view like agent
+- accessed with a widget on a smartphone / shareable webapp
+- other
 
 bloid is a mix of vatch https://github.com/scenaristeur/vatch/ & levelgraph-jsonld https://github.com/levelgraph/levelgraph-jsonld & https://scenaristeur.github.io/agent
 
@@ -51,14 +56,14 @@ voir aussi multilevel pour exposer la base :
 > bloid-core@0.0.1-alpha.0 test
 > mocha test
 
-  bloid-core
-    ✔ core name should be 'CoolCore'
-    ✔ core config.type should be 'config'
-    ✔ core commander.type should be 'commander'
-    ✔ core filesystem.type should be 'filesystem'
+bloid-core
+✔ core name should be 'CoolCore'
+✔ core config.type should be 'config'
+✔ core commander.type should be 'commander'
+✔ core filesystem.type should be 'filesystem'
 
 
-  4 passing (5ms)
+4 passing (5ms)
 
 ```
 
@@ -74,13 +79,13 @@ voir aussi multilevel pour exposer la base :
 
 ~/.os$ cat .config.jsonld
 {
-      "db_name": "Universe",
-      "db_path": "/home/xxxx/.os/UniverseDb",
-      "description": "A cool jsonld database for storing my thoughts",
-      "version": "0.0.1",
-      "owner": "smag",
-      "base_opts": "{ base: 'http://local/base' }"
-    }
+  "db_name": "Universe",
+  "db_path": "/home/xxxx/.os/UniverseDb",
+  "description": "A cool jsonld database for storing my thoughts",
+  "version": "0.0.1",
+  "owner": "smag",
+  "base_opts": "{ base: 'http://local/base' }"
+}
 
 
 
@@ -100,28 +105,28 @@ var manu = {
       "@id": "http://xmlns.com/foaf/0.1/homepage",
       "@type": "@id"
     }
-  },
-  "@id": "http://manu.sporny.org#person",
-  "name": "Manu Sporny",
-  "homepage": "http://manu.sporny.org/"
-};
+    },
+    "@id": "http://manu.sporny.org#person",
+    "name": "Manu Sporny",
+    "homepage": "http://manu.sporny.org/"
+  };
 
-db.jsonld.put(manu, function(err, obj) {
-  // do something after the obj is inserted
-  console.log(err, obj)
-});
+  db.jsonld.put(manu, function(err, obj) {
+    // do something after the obj is inserted
+    console.log(err, obj)
+    });
 
-```
+    ```
 
- # connexions
- - gundb
- - ipfs
- -  matrix-crdt
- - telegram bot api
+    # connexions
+    - gundb
+    - ipfs
+    -  matrix-crdt
+    - telegram bot api
 
 
-# sur vatch-vue
-- create folder ending with a slash
-`/data/Bloid/ + send` -> create a /data/Bloid folder
-- create file not ending with a slash
-`/data/Bloid/vatch + send` -> create a /data/Bloid/vatch file
+    # sur vatch-vue
+    - create folder ending with a slash
+    `/data/Bloid/ + send` -> create a /data/Bloid folder
+    - create file not ending with a slash
+    `/data/Bloid/vatch + send` -> create a /data/Bloid/vatch file

@@ -67,7 +67,8 @@ bloid-core
 
 ```
 
-
+# ld-query
+- https://github.com/goofballLogic/ld-query
 
 # fuse user space
 - https://www.youtube.com/watch?v=SG10bZeYi6k

@@ -12,7 +12,7 @@
     "type": "thing",
     "ve:age": -1,
     "ve:properties": [],
-    "ve:actions": [],
+    "ve:actions": ["boire", "manger"],
     "ve:links": [],
     "ve:meta": {
       "ve:created": 1656287316767

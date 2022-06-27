@@ -120,6 +120,7 @@ export default {
       }
     },
     created () {
+      let app = this
       let coreStore = this.$store.state.vatch
       this.commands.ls = ({ _ }) => {
         let localResources = coreStore.localResources
@@ -137,9 +138,10 @@ export default {
       }
 
 
-      this.commands.test = ({ _ }) => {
-
-        return createStdout("test "+_[1] + " ## "+ _)
+      this.commands.test = async function(_) {
+        let params = {start: Date.now(), data: _ }
+        let result = await app.$io_ld_test(params)
+        return createStdout("test "+_[1] + " ## "+ _+" -- "+JSON.stringify(result))
       }
 
 

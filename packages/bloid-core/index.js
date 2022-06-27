@@ -23,10 +23,10 @@ class BloidCore extends BloidTemplate{
     //this.config = new BloidConfig({core: this})
     this.commander = new BloidCommander({core: this})
 
-    this.data = new BloidData({core: this, name: this.config.get('db.name'), base: this.config.get('db.base')})
+    this.ld = new BloidData({core: this, name: this.config.get('db.name'), base: this.config.get('db.base')})
     this.server = new BloidServer({core: this})
     this.filesystem = new BloidFilesystem({core: this, root: this.config.get('filesystem.root')})
-this.init()
+    this.init()
   }
   init(){
     //console.log(this.socket.io)

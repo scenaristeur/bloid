@@ -24,7 +24,15 @@ class BloidData extends BloidTemplate{
 
     this.opts       = { base: this.base },
     this.db         = jsonld(levelgraph(this.universDB), this.opts);
-  //  console.log("BloidData", this)
+    //  console.log("BloidData", this)
+  }
+
+
+  async test(params){
+
+    let result = { status: "ok", params: params}
+    result.params.end = Date.now()
+    return result
   }
 
 }

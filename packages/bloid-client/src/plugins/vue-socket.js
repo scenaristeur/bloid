@@ -56,13 +56,25 @@ const plugin = {
       console.log('chat message',msg)
       store.commit("vatch/addChatMessage", msg)
     });
-
+    
     socket.on('connect', () => {
       store.commit("vatch/setUser", socket.id)
     });
     socket.on('disconnect', () => {
       store.commit("vatch/setUser", null)
     });
+
+    socket.on('ld_test', function(result) {
+      console.log(result)
+      store.commit("ld/setLdTestResult", result)
+    });
+
+
+    Vue.prototype.$io_ld_test = async function(params){
+      console.log(params)
+      socket.emit("ld_test", params)
+    }
+
 
   },
 }

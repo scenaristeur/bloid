@@ -3,17 +3,23 @@
     see <a href="https://scenaristeur.github.io/vatch-vue">https://scenaristeur.github.io/vatch-vue/</a>
     <!-- <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-<ul>
-  <li>
-    config to select bloid server
-</li>
-<li>
-  terminal like in agent
-<TerminalView />
-</li>
+    <ul>
+      <li>
+        config to select bloid server
+      </li>
+      <li>
+        terminal like in agent
+        <TerminalView />
+      </li>
+
+      <li>
+        log view
+        <LogView />
+
+      </li>
 
 
-  </ul>
+    </ul>
   </div>
 </template>
 
@@ -25,7 +31,8 @@ export default {
   name: 'HomeView',
   components: {
     // HelloWorld
-        'TerminalView': ()=>import('@/views/TerminalView'),
+    'TerminalView': ()=>import('@/views/TerminalView'),
+    'LogView': ()=>import('@/views/LogView'),
   }
 }
 </script>

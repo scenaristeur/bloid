@@ -75,28 +75,33 @@ class BloidRealtime extends BloidTemplate{
 
 
 
+
+
+      socket.on('ld_test', async function(params){
+        console.log("params",params)
+        let result = await core.ld.test(params)
+        console.log("result", result)
+        io.emit('ld_test', result);
+      });
+
       // Levelgraph
-      socket.on('put', (thing) => {
-        console.log(thing)
-        db.jsonld.put(thing, function(err, obj) {
-          // do something after the obj is inserted
-          console.log(err, obj)
-          io.emit('created', obj);
-
-          //
-          // db.search([{
-          //   subject: thing['@id'],
-          // }], function(err, solution){
-          //
-          //   console.log("solution",solution)
-          // })
-
-        });
-      })
-
-
-
-
+      // socket.on('put', (thing) => {
+      //   console.log(thing)
+      //   db.jsonld.put(thing, function(err, obj) {
+      //     // do something after the obj is inserted
+      //     console.log(err, obj)
+      //     io.emit('created', obj);
+      //
+      //     //
+      //     // db.search([{
+      //     //   subject: thing['@id'],
+      //     // }], function(err, solution){
+      //     //
+      //     //   console.log("solution",solution)
+      //     // })
+      //
+      //   });
+      // })
 
 
       /// Basic files

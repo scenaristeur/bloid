@@ -1,14 +1,14 @@
 {
   "name": "bloid-config",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.2-alpha.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-      "test": "mocha test"
+    "test": "mocha test"
   },
   "dependencies": {
-    "bloid-template": "^0.0.1-alpha.0",
+    "bloid-template": "^0.0.2-alpha.0",
     "conf": "^10.1.2"
   },
   "keywords": [],

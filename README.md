@@ -8,7 +8,11 @@ npm run start
 # let command
 you can add new thing with just the `let` command or a complete one :
 ```
-let ghy=az kut=fdy dfds=ryusq
+let # -> create a blank new thing
+let fada # -> create a new thing with name 'fada'
+let age champ ville # -> create a new thing with custom 3 fields
+let ghy=az kut=fdy dfds=ryusq #-> create a new thing with 3 custom fileds already filed
+# work in progress create a thing specifying the type of field according to rdf datatypes https://www.w3.org/TR/swbp-xsch-datatypes/
 let name=dav age=45 force=12 date=14/05/1977^^date "prefered color"=blue^^color
 let name=dav age=45 force=12^^number resistance=2.567^^number date=14/05/1977^^date color=blue^^color
 ```
@@ -52,6 +56,9 @@ voir aussi multilevel pour exposer la base :
 
 - levelgraph-jsonld (tests/index-levelgraph-jsonld.js)
 
+
+# should plug to wikidata
+- to get interopérable resources, see scenaristeur.github.io/agent for working api query
 
 # lerna js
 - tool for monorepos https://lerna.js.org/

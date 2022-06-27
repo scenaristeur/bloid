@@ -1,0 +1,4 @@
+[submodule "public/bloid-client"]
+	path = public/bloid-client
+	url = https://github.com/scenaristeur/bloid-client.git
+	branch = gh-pages

@@ -78,6 +78,15 @@ class BloidRealtime extends BloidTemplate{
         console.log("result", result)
         io.emit('ld_test', result);
       });
+      
+      socket.on('ld_crud', async function(params){
+
+        params.socket_id = socket.id
+        console.log("params",params)
+        let result = await core.ld.crud(params)
+        // console.log("result", result)
+        // io.emit('ld_crud', result);
+      });
 
       // Levelgraph
       // socket.on('put', (thing) => {

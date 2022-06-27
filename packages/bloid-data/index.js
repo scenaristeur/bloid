@@ -60,14 +60,60 @@ class BloidData extends BloidTemplate{
   }
 
 
-  async test(params){
+  // async test(params){
+  //
+  //   await this.test(params)
+  //   let result = { status: "ok", params: params}
+  //
+  //   result.params.end = Date.now()
+  //   return result
+  // }
 
-    await this.test(params)
-    let result = { status: "ok", params: params}
 
-    result.params.end = Date.now()
-    return result
+  async crud(params){
+    console.log(params)
+    switch (params.action) {
+      case 'create':
+      this.create(params)
+      break;
+      case 'read':
+
+      break;
+      case 'update':
+
+      break;
+      case 'delete':
+
+      break;
+      default:
+
+    }
   }
+
+
+
+create(params){
+    console.log("!!!create", params)
+    let module = this
+
+    this.db.jsonld.put(params.thing, /*opts, */ function(err, obj) {
+      console.log("err", err)
+      console.log("obj", obj)
+      params.err = err
+      params.obj = obj
+      params.end = Date.now()
+
+      err ? params.status = "ko" : params.status = "ok"
+      module.core.io.emit('ld_crud', params)
+      // do something after the obj is inserted
+    });
+}
+
+
+
+
+
+
 
   ////////////////////////
   // TEST

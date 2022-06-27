@@ -4,6 +4,13 @@ import { BloidRealtime } from 'bloid-realtime'
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -20,9 +27,11 @@ class BloidServer extends BloidTemplate{
     };
     super(options)
     this.core.socket = new BloidRealtime({core: this.core, server:server})
-    app.use(express.static('./packages/bloid-client/dist'));
+     app.use(express.static('./public/'));
+    // app.use(express.static('./public'));
     app.get('/', (req, res) => {
-      res.sendFile('./packages/bloid-client/dist/index.html');
+      // res.sendFile('./public/index.html');
+      res.sendFile('./public/index.html');
     });
 
     this.listen()

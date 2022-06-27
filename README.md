@@ -8,6 +8,7 @@ npm run start
 # let command
 you can add new thing with just the `let` command or a complete one :
 ```
+let ghy=az kut=fdy dfds=ryusq
 let name=dav age=45 force=12 date=14/05/1977^^date "prefered color"=blue^^color
 let name=dav age=45 force=12^^number resistance=2.567^^number date=14/05/1977^^date color=blue^^color
 ```

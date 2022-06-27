@@ -20,6 +20,8 @@
 
 
     </ul>
+    <b-button v-b-modal.modal-letview>Launch demo modal</b-button>
+    <LetView />
   </div>
 </template>
 
@@ -33,6 +35,7 @@ export default {
     // HelloWorld
     'TerminalView': ()=>import('@/views/TerminalView'),
     'LogView': ()=>import('@/views/LogView'),
+    'LetView': ()=>import('@/views/crud/LetView'),
   }
 }
 </script>

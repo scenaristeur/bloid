@@ -7,6 +7,15 @@
     <router-view/>
   </div>
 </template>
+<script>
+export default {
+  name:"App",
+  // created(){
+  //   this.$socket_connect()
+  // }
+
+}
+</script>
 
 <style>
 #app {
@@ -19,7 +28,7 @@
 
 nav {
   padding: 30px;
-    text-align: center;
+  text-align: center;
 }
 
 nav a {

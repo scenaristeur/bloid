@@ -153,6 +153,14 @@ export default {
         return createStdout("switching to files mode "+ _[1])
       }
 
+this.commands.let = ({_}) =>{
+  this.$store.commit('crud/setCreateParams', _)
+  this.$bvModal.show('modal-letview')
+
+return createStdout("let done "+ _[1] + " " +_)
+
+}
+
 
       this.commands.clear = () => {
         this.history = []

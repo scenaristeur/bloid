@@ -11,49 +11,16 @@ const plugin = {
     // share your localhost storage on your localnetwork
     let location = window.location.toString()
     console.log("location",location)
-    let def_server = 'http://localhost'
-    let def_port = "5000"
+    let server = 'http://localhost:3000'
     if(location.startsWith("https://scenaristeur.github.io/vatch-vue/")){
-      console.info("Vatch Client Location: "+location+" -> Connecting to your local filesystem through socket.io on ", def_server)
+      console.info("Vatch Client Location: "+location+" -> Connecting to your local filesystem through socket.io on ", server)
     }else{
-      //server = ':3000'
-      console.info("Vatch Client Location: "+location+" -> Sharing your local filesystem to your local network through socket.io on ", def_server)
+      server = ':3000'
+      console.info("Vatch Client Location: "+location+" -> Sharing your local filesystem to your local network through socket.io on ", server)
     }
 
-    // console.log("server",ws)
-    //let socket = Vue.prototype.$socket = io(server);
-    let socket
 
-
-    Vue.prototype.$socket_connect = async function(server= def_server, port= def_port){
-      // let sock
-      // console.log("try",server, port, io)
-      // while(sock == undefined || port == "5000"){
-      //   socket = Vue.prototype.$socket = io(server+port);
-      // setTimeout(() => {
-      //   console.log("try to connect / Retardée d'une seconde.", server, port);
-      // //  sock = io(server+port);
-      //   port++
-      // }, "1000")
-      //
-      //   socket = Vue.prototype.$socket = sock
-      //
-      // }
-
-      socket = Vue.prototype.$socket = io(server+":"+port);
-    }
-
-Vue.prototype.$socket_connect()
-
-    socket.onAny((event, ...args) => {
-      console.log(`reçu ${event}, ${args}`);
-    });
-
-    socket.on("connect_error", (error) => {
-      console.log(error)
-
-    });
-
+    let socket = Vue.prototype.$socket = io(server);
 
     socket.on('init', function(init) {
       console.log('init',init)

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 // import solid from './modules/solid'
 import vatch from './modules/vatch'
 import ld from './modules/ld'
+import crud from './modules/crud'
 
 Vue.use(Vuex)
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   modules: {
     //solid,
     vatch,
-    ld
+    ld,
+    crud
   }
 })

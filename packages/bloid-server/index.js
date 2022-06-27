@@ -8,6 +8,8 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
+// import getPort, {portNumbers} from 'get-port';
+import getPort from 'get-port';
 const open = require('open');
 
 class BloidServer extends BloidTemplate{
@@ -22,13 +24,19 @@ class BloidServer extends BloidTemplate{
     app.get('/', (req, res) => {
       res.sendFile('./packages/bloid-client/dist/index.html');
     });
-    let port = options.port  | 3000
-    server.listen(port, () => {
-      console.log('server running at localhost:'+port);
+
+    this.listen()
+    //console.log(this.core)
+  }
+
+  async listen(){
+    // this.port = await getPort({port: portNumbers(3000, 3100)})
+    this.port = await getPort({port: [5000, 5001, 5002]})
+    server.listen(this.port, () => {
+      console.log('server running at localhost:'+this.port);
       console.log('1. First time client install: `npm run client:install`')
       console.log('2. later client update: `npm run client:update`');
-      open('http://localhost:'+port);
+      open('http://localhost:'+this.port);
     });
-    //console.log(this.core)
   }
 }

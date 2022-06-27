@@ -35,11 +35,6 @@ console.log("smag : ", smagMainWorker.getData())
 
 
 
-
-
-
-
-
 class BloidRealtime extends BloidTemplate{
   constructor(options = {}) {
     options = {

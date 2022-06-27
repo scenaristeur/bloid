@@ -5,6 +5,14 @@ npx lerna bootstrap
 npm run start
 ```
 
+# let command
+you can add new thing with just the `let` command or a complete one :
+```
+let name=dav age=45 force=12 date=14/05/1977^^date "prefered color"=blue^^color
+let name=dav age=45 force=12^^number resistance=2.567^^number date=14/05/1977^^date color=blue^^color
+```
+
+
 - Bloid allows you to manage your (meta)datas anf files between real life and virtual worlds.
 - My computer was a dumb machine, and we will learn together how to build a smart one.
 - Bloid is a user interface to manage your multiple verses.
@@ -76,6 +84,12 @@ bloid-core
 - https://github.com/mafintosh/fuse-bindings
 - successor https://github.com/fuse-friends/fuse-native
 
+
+# commandline crud for collaborate
+https://vuonganht.medium.com/creating-my-first-command-line-crud-app-61fc4fd6e530
+
+# fuse
+- https://fusejs.io/demo.html
 
 
 ~/.os$ cat .config.jsonld

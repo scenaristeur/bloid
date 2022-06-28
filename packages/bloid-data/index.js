@@ -76,6 +76,9 @@ class BloidData extends BloidTemplate{
       case 'create':
       this.create(params)
       break;
+      case 'get':
+      this.get(params)
+      break;
       case 'read':
 
       break;
@@ -92,22 +95,73 @@ class BloidData extends BloidTemplate{
 
 
 
-create(params){
+  create(params){
     console.log("!!!create", params)
     let module = this
 
-    this.db.jsonld.put(params.thing, /*opts, */ function(err, obj) {
+    this.db.jsonld.put(params.thing, /*opts, */ function(err, result) {
       console.log("err", err)
-      console.log("obj", obj)
+      console.log("obj", result)
       params.err = err
-      params.obj = obj
+      params.obj = result
       params.end = Date.now()
 
       err ? params.status = "ko" : params.status = "ok"
       module.core.io.emit('ld_crud', params)
       // do something after the obj is inserted
     });
-}
+  }
+
+  get(params){
+    console.log("!!! GET", params)
+
+    let module = this
+    //  let module = this
+    let db = this.db
+    //  if(debug)  console.log(data)
+
+    let term = params.what //|| data.array[1] // data.what pour commander.js / à corriger : data.array[1] dans prompt/command
+    //  if(debug) console.log(term)
+
+
+
+    let search_criterias = {
+      subject: db.v('subject'),
+      predicate: db.v('predicate'),
+      object: db.v('object'),
+      //  filter: search_filter
+    }
+    if (params.what != undefined && params.what.length > 0){
+      function search_filter(triple) {
+        return (triple.subject != undefined && triple.subject.includes(term) )
+        || (triple.predicate!= undefined && triple.predicate.includes(term) )
+        || (triple.object != undefined && triple.object.includes(term) );
+      }
+      search_criterias.filter = search_filter
+    }
+
+    console.log(search_criterias)
+
+    db.search(search_criterias, function process(err, result) {
+      console.log("err",err)
+      console.log("result", result)
+      params.err = err
+      params.result = result
+      params.end = Date.now()
+      const socket = module.core.io.sockets.sockets.get(params.socket_id);
+      console.log(params)
+      socket.emit('ld_crud', params)
+      //module.core.displayList({header: "FINDING "+term, list: results})
+
+
+      // results will not contain any triples that
+      // have 'daniele' as object
+    });
+
+
+
+
+  }
 
 
 

@@ -5,17 +5,77 @@ npx lerna bootstrap
 npm run start
 ```
 
-# let command
-you can add new thing with just the `let` command or a complete one :
+on another window run bloid-client https://github.com/scenaristeur/bloid-client or use the online version https://scenaristeur.github.io/bloid-client/
+
+the two (server & client) should be able to realtime communicate through port 5000 via socket.io
+
+
+# what it does
+## On the client,
+
+ the `let` command let you create new things :
+- `let` catch in client src/views/TerminalView with `this.commands.let = ({_}) =>{...}` open a modal where you can type details of the thing
+- when hiting the save button on the src/views/crud/CrudLet.vue a new 'crud' thing is created with action 'create' and the global function $io_ld_crud is called
 ```
-let # -> create a blank new thing
-let fada # -> create a new thing with name 'fada'
-let age champ ville # -> create a new thing with custom 3 fields
-let ghy=az kut=fdy dfds=ryusq #-> create a new thing with 3 custom fileds already filed
-# work in progress create a thing specifying the type of field according to rdf datatypes https://www.w3.org/TR/swbp-xsch-datatypes/
-let name=dav age=45 force=12 date=14/05/1977^^date "prefered color"=blue^^color
-let name=dav age=45 force=12^^number resistance=2.567^^number date=14/05/1977^^date color=blue^^color
+save(){
+    console.log("save ", this.thing)
+    let crud = {action: "create", thing: this.thing, start: Date.now()}
+    this.$io_ld_crud(crud)
+  },
 ```
+- the $io_ld_crud function in client /src/pugins/vue-socket.js send this 'crud' thing to the server with socket.io
+```
+Vue.prototype.$io_ld_crud= async function(params){
+  console.log(params)
+  socket.emit("ld_crud", params)
+}
+```
+
+## On the server
+- the server is receiving communication in packages/bloid-realtime/index.js transmitting it to the core.ld.crud function
+located in packages/bloid-data/index.js
+```
+socket.on('ld_crud', function(params){
+  params.socket_id = socket.id
+  console.log("params",params)
+core.ld.crud(params)
+});
+```
+- according to params.action (create), the `this.create(params)` is then launched
+- the last one put the thing in the levelgraph-jsonld database. the result of this 'put action' is then send to all connected clients with  `module.core.io.emit('ld_crud', params)`
+
+
+```
+create(params){
+    console.log("!!!create", params)
+    let module = this
+
+    this.db.jsonld.put(params.thing, /*opts, */ function(err, obj) {
+      console.log("err", err)
+      console.log("obj", obj)
+      params.err = err
+      params.obj = obj
+      params.end = Date.now()
+
+      err ? params.status = "ko" : params.status = "ok"
+      module.core.io.emit('ld_crud', params)
+      // do something after the obj is inserted
+    });
+}
+```
+## back on each client,
+in src/plugins/vue-socket.js
+```
+socket.on('ld_crud', function(result) {
+  console.log(result)
+  store.commit("crud/addHistory", result)
+});
+```
+the result of the action is added to the store of each client and can be used /displayed like in src/views/crud/CrudHistor.vue
+
+
+
+
 
 
 - Bloid allows you to manage your (meta)datas anf files between real life and virtual worlds.
@@ -33,6 +93,20 @@ let name=dav age=45 force=12^^number resistance=2.567^^number date=14/05/1977^^d
 - Bloid should be local-first, and synch to any type of device (Solid, ipfs, gundb..., multilevel (not working yet)? )
 - Bloid should keep an history of actions (trellis ? ActivityPub ?), a versioning of objects (git-ipfs?)
 - intelligent comment un enfant qui apprend de zéro, le système s'adapte à son utilisateur et peut partager ses methodes apprises avec d'autres systèmes partenaires, apprendre d'eux... Progressive Neural network
+
+
+# let command
+you can add new thing with just the `let` command or a complete one :
+```
+let # -> create a blank new thing
+let fada # -> create a new thing with name 'fada'
+let age champ ville # -> create a new thing with custom 3 fields
+let ghy=az kut=fdy dfds=ryusq #-> create a new thing with 3 custom fileds already filed
+# work in progress create a thing specifying the type of field according to rdf datatypes https://www.w3.org/TR/swbp-xsch-datatypes/
+let name=dav age=45 force=12 date=14/05/1977^^date "prefered color"=blue^^color
+let name=dav age=45 force=12^^number resistance=2.567^^number date=14/05/1977^^date color=blue^^color
+```
+
 
 # access
 - bloid can be accessed via
@@ -55,6 +129,13 @@ voir aussi multilevel pour exposer la base :
 - ou https://github.com/juliangruber/multilevel compatible websocket-stream & authentication
 
 - levelgraph-jsonld (tests/index-levelgraph-jsonld.js)
+
+# graphdb
+- https://orientdb.org/
+- virtuoso
+- fuseki
+- virtuoso
+
 
 
 # should plug to wikidata

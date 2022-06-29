@@ -1,6 +1,5 @@
 {
   "name": "bloid-config",
-  "version": "0.0.2-alpha.0",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -8,7 +7,7 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "bloid-template": "^0.0.2-alpha.0",
+    "bloid-template": "*",
     "conf": "^10.1.2"
   },
   "keywords": [],

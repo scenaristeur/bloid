@@ -1,11 +1,20 @@
 # bloid
 
 ```
+mkdir -p ~/.os/.universDB #where your jsonldgraph db will be stored
+cd bloid
 npx lerna bootstrap
+npm run client:install
 npm run start
+#enjoy !
 ```
 
-on another window run bloid-client https://github.com/scenaristeur/bloid-client or use the online version https://scenaristeur.github.io/bloid-client/
+if you want to update your client
+```
+npm run client:update
+```
+- or on another window run bloid-client in dev mode https://github.com/scenaristeur/bloid-client
+- or use the online version https://scenaristeur.github.io/bloid-client/
 
 the two (server & client) should be able to realtime communicate through port 5000 via socket.io
 

@@ -55,7 +55,8 @@ class BloidData extends BloidTemplate{
     this.universDB     = level(this.db_path)
 
     this.opts       = { base: this.base },
-    this.db         = jsonld(levelgraph(this.universDB), this.opts);
+    this.levelgraphdb = levelgraph(this.universDB)
+    this.db         = jsonld(this.levelgraphdb, this.opts);
     //  console.log("BloidData", this)
   }
 
@@ -111,6 +112,17 @@ class BloidData extends BloidTemplate{
       // do something after the obj is inserted
     });
   }
+
+
+// get(params){
+//   console.log("get top level",params)
+//
+//   let module = this
+//   // let db = this.db
+//   let db = this.levelgraphdb
+//     let term = params.what
+//
+// }
 
   get(params){
     console.log("!!! GET", params)

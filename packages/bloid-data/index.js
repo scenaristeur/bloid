@@ -101,9 +101,9 @@ class BloidData extends BloidTemplate{
 
     this.db.jsonld.put(params.thing, /*opts, */ function(err, result) {
       console.log("err", err)
-      console.log("obj", result)
+      console.log("result", result)
       params.err = err
-      params.obj = result
+      params.result = result
       params.end = Date.now()
 
       err ? params.status = "ko" : params.status = "ok"
@@ -148,6 +148,7 @@ class BloidData extends BloidTemplate{
       params.err = err
       params.result = result
       params.end = Date.now()
+      err ? params.status = "ko" : params.status = "ok"
       const socket = module.core.io.sockets.sockets.get(params.socket_id);
       console.log(params)
       socket.emit('ld_crud', params)

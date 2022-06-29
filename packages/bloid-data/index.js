@@ -40,6 +40,18 @@ var manu = {
   }]
 };
 
+let wikidata_context = {
+  "@context": {
+    "@vocab": "https://scenaristeur/github.io/bloid/",
+    "name": "https://www.wikidata.org/wiki/Q82799",
+    "type": "https://www.wikidata.org/wiki/Q21146257",
+    "description": "https://www.wikidata.org/wiki/Q1200750",
+    "version": "https://www.wikidata.org/wiki/Q20826013",
+    "creator": "https://www.wikidata.org/wiki/Q2500638",
+    //  "@base": "https://www.wikidata.org/wiki/"
+  }
+}
+
 
 class BloidData extends BloidTemplate{
   constructor(options = {}) {
@@ -100,29 +112,35 @@ class BloidData extends BloidTemplate{
     console.log("!!!create", params)
     let module = this
 
-    this.db.jsonld.put(params.thing, /*opts, */ function(err, result) {
-      console.log("err", err)
-      console.log("result", result)
-      params.err = err
-      params.result = result
-      params.end = Date.now()
-
-      err ? params.status = "ko" : params.status = "ok"
-      module.core.io.emit('ld_crud', params)
+    this.db.jsonld.put(params.thing, /*opts, */ function(err, obj) {
+      // console.log("err", err)
+      // console.log("result", result)
+      // params.err = err
+      // params.result = result
+      // params.end = Date.now()
+      //
+      // err ? params.status = "ko" : params.status = "ok"
+      // module.core.io.emit('ld_crud', params)
+      let p_o = {
+        action: "ld_object",
+        obj: obj,
+        err : err
+      }
+      module.core.io.emit('ld_crud', p_o)
       // do something after the obj is inserted
     });
   }
 
 
-// get(params){
-//   console.log("get top level",params)
-//
-//   let module = this
-//   // let db = this.db
-//   let db = this.levelgraphdb
-//     let term = params.what
-//
-// }
+  // get(params){
+  //   console.log("get top level",params)
+  //
+  //   let module = this
+  //   // let db = this.db
+  //   let db = this.levelgraphdb
+  //     let term = params.what
+  //
+  // }
 
   get(params){
     console.log("!!! GET", params)
@@ -145,14 +163,16 @@ class BloidData extends BloidTemplate{
     }
     if (params.what != undefined && params.what.length > 0){
       function search_filter(triple) {
-        return (triple.subject != undefined && triple.subject.includes(term) )
-        || (triple.predicate!= undefined && triple.predicate.includes(term) )
-        || (triple.object != undefined && triple.object.includes(term) );
+        triple.term = term
+        triple.found = []
+        return (triple.subject != undefined && triple.subject.includes(term) && triple.found.push('s') )
+        || (triple.predicate!= undefined && triple.predicate.includes(term) && triple.found.push('p')  )
+        || (triple.object != undefined && triple.object.includes(term) && triple.found.push('o') );
       }
       search_criterias.filter = search_filter
     }
 
-    console.log(search_criterias)
+    //console.log(search_criterias)
 
     db.search(search_criterias, function process(err, result) {
       console.log("err",err)
@@ -162,24 +182,29 @@ class BloidData extends BloidTemplate{
       params.end = Date.now()
       err ? params.status = "ko" : params.status = "ok"
       const socket = module.core.io.sockets.sockets.get(params.socket_id);
+
       console.log(params)
       socket.emit('ld_crud', params)
-      //module.core.displayList({header: "FINDING "+term, list: results})
 
+      let known = []
+      result.map(r => {
+        if (!known.includes(r.subject)){
+          console.log("search",r.subject)
+          known.push(r.subject)
+          db.jsonld.get(r.subject, wikidata_context, function(err,obj) {
+            // obj will be the very same of the manu object
 
-      // results will not contain any triples that
-      // have 'daniele' as object
-    });
-
-
-
-
+            let p_o = {
+              action: "ld_object",
+              obj: obj,
+              err : err
+            }
+            socket.emit('ld_crud', p_o)
+          })
+        }
+      });
+    })
   }
-
-
-
-
-
 
 
   ////////////////////////

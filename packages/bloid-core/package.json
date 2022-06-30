@@ -8,12 +8,12 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "bloid-commander": "*",
-    "bloid-data": "*",
-    "bloid-filesystem": "*",
-    "bloid-server": "*",
-    "bloid-template": "*",
-    "bloid-user": "*"
+    "bloid-commander": "^0.0.0",
+    "bloid-data": "^0.0.0",
+    "bloid-filesystem": "^0.0.0",
+    "bloid-server": "^0.0.0",
+    "bloid-template": "^0.0.0",
+    "bloid-user": "^0.0.0"
   },
   "keywords": [],
   "author": "",

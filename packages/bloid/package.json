@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bloid-core": "*",
+    "bloid-core": "^0.0.0",
     "bloid-template": "^0.0.0",
     "bloid-user": "^0.0.0",
     "conf": "^10.1.2"

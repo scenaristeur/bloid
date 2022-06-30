@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bloid-template": "*",
+    "bloid-template": "^0.0.0",
     "crypto": "^1.0.1",
     "sqlite3": "^5.0.8"
   },

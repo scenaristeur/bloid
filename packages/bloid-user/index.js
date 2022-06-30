@@ -59,16 +59,32 @@ class BloidUser extends BloidTemplate{
 
     db.run(creation_req);
   }
-
-  login(params){
-    console.log("login db", params)
-    passport.authenticate('local', { successRedirect: '/good-login',
-    failureRedirect: '/bad-login' });
-
-  }
-
-  logout(params){
-    console.log("logout db", params)
-  }
-
 }
+
+//   login(params){
+//     console.log("login db", params)
+//     passport.authenticate('local', function (err, account) {
+//     req.logIn(account, function() {
+//         res.status(err ? 500 : 200).send(err ? err : account);
+//     });
+// })(this.req, this.res, this.next);
+//     //  { successRedirect: '/good-login',
+//     // failureRedirect: '/bad-login' }
+//   );
+//
+// }
+//
+// logout(params){
+//   console.log("logout db", params)
+// }
+//
+// }
+//
+// function callback(e, u, i) {
+//   console.log("cb")
+//   error = e;
+//   user = u;
+//   info = i;
+//   console.log(error,user, info)
+//   done();
+// }

@@ -93,7 +93,7 @@ class BloidData extends BloidTemplate{
       this.get(params)
       break;
       case 'getById':
-      //this.getById(params)
+      this.getById(params)
       break;
       case 'read':
 
@@ -209,27 +209,38 @@ class BloidData extends BloidTemplate{
     })
   }
 
-  // async getById (params){
-  //   let module = this
-  //
-  //   console.log("!!!GETBYID", params)
-  //   const socket = module.core.io.sockets.sockets.get(params.socket_id);
-  //   let opts = this.opts
-  //   //opts['@context'] =  manu['@context']
-  //   console.log(opts)
-  //   await this.db.jsonld.get(params['@id'], wikidata_context, function(err, obj) {
-  //     params.operation = "get"
-  //     console.log("err", err)
-  //     console.log("obj", obj)
-  //     params.err = err
-  //     params.obj = obj
-  //     params.end = Date.now()
-  //
-  //     err ? params.status = "ko" : params.status = "ok"
-  //     socket.emit('ld_crud', params)
-  //     // do something after the obj is inserted
-  //   });
-  // }
+  async getById (params){
+    let module = this
+
+    console.log("!!!GETBYID", params)
+    const socket = module.core.io.sockets.sockets.get(params.socket_id);
+    let opts = this.opts
+    //opts['@context'] =  manu['@context']
+    console.log(opts)
+    await this.db.jsonld.get(params['@id'], wikidata_context, function(err, obj) {
+      params.operation = "get"
+      console.log("err", err)
+      console.log("obj", obj)
+      params.err = err
+      params.obj = obj
+      params.end = Date.now()
+
+      err ? params.status = "ko" : params.status = "ok"
+      socket.emit('ld_crud', params)
+      // do something after the obj is inserted
+    });
+
+    // db.jsonld.get(r.subject, wikidata_context, function(err,obj) {
+    //   // obj will be the very same of the manu object
+    //
+    //   let p_o = {
+    //     action: "ld_object",
+    //     obj: obj,
+    //     err : err
+    //   }
+    //   socket.emit('ld_crud', p_o)
+    // })
+  }
 
 
   ////////////////////////

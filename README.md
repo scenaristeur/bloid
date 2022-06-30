@@ -243,3 +243,7 @@ var manu = {
     `/data/Bloid/ + send` -> create a /data/Bloid folder
     - create file not ending with a slash
     `/data/Bloid/vatch + send` -> create a /data/Bloid/vatch file
+
+
+# lerna
+- lerna add bloid-template packages/bloid-user

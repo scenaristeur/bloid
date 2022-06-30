@@ -1,0 +1,4 @@
+0 silly argv { _: [ 'run' ], lernaVersion: '5.1.6', '$0': 'lerna', script: 'test' }
+1 notice cli v5.1.6
+2 verbose rootPath /home/dfaveris01/dev/bloid
+3 error

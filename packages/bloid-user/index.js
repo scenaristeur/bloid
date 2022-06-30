@@ -5,12 +5,13 @@ const require = createRequire(import.meta.url);
 export { BloidUser }
 
 const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 var crypto = require('crypto');
 const sqlite3 = require('sqlite3').verbose();
 // const db = new sqlite3.Database(':memory:');
 var db = new sqlite3.Database('./database.sqlite3-users');
 
-const creation_req = `CREATE TABLE "users" (
+const creation_req = `CREATE TABLE IF NOT EXISTS "users" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "username" TEXT,
   "password" TEXT, -- sha256 hash of the plain-text password

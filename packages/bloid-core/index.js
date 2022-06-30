@@ -10,6 +10,7 @@ import { BloidFilesystem } from 'bloid-filesystem'
 
 // import { BloidRepl } from 'bloid-repl'
 import { BloidServer } from 'bloid-server'
+import { BloidUser } from 'bloid-user'
 
 export { BloidCore }
 
@@ -26,6 +27,7 @@ class BloidCore extends BloidTemplate{
     this.ld = new BloidData({core: this, name: this.config.get('db.name'), base: this.config.get('db.base')})
     this.server = new BloidServer({core: this})
     this.filesystem = new BloidFilesystem({core: this, root: this.config.get('filesystem.root')})
+    this.user = new BloidUser({core: this})
     this.init()
   }
   init(){

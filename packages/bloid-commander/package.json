@@ -1,6 +1,7 @@
 {
   "name": "bloid-commander",
   "description": "",
+  "version": "0.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -8,6 +9,7 @@
   },
   "dependencies": {
     "bloid-template": "*",
+    "bloid-user": "^0.0.0",
     "commander": "^9.3.0"
   },
   "keywords": [],

@@ -1,11 +1,16 @@
 {
   "name": "bloid-client-graph",
   "description": "",
+  "version": "0.0.0",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bloid-template": "^0.0.0",
+    "bloid-user": "^0.0.0"
+  }
 }

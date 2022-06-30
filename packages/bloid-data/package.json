@@ -1,6 +1,7 @@
 {
   "name": "bloid-data",
   "description": "",
+  "version": "0.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -8,6 +9,7 @@
   },
   "dependencies": {
     "bloid-template": "*",
+    "bloid-user": "^0.0.0",
     "level": "^7.0.1",
     "levelgraph-jsonld": "github:scenaristeur/levelgraph-jsonld#patch-1"
   },

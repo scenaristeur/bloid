@@ -1,6 +1,7 @@
 {
   "name": "bloid-core",
   "description": "",
+  "version": "0.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -11,7 +12,8 @@
     "bloid-data": "*",
     "bloid-filesystem": "*",
     "bloid-server": "*",
-    "bloid-template": "*"
+    "bloid-template": "*",
+    "bloid-user": "*"
   },
   "keywords": [],
   "author": "",

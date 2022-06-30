@@ -82,6 +82,19 @@ class BloidRealtime extends BloidTemplate{
         core.ld.crud(params)
       });
 
+      socket.on('login', function(params){
+        params.socket_id = socket.id
+        //params.socket = socket
+        console.log("params",params)
+        core.user.login(params)
+      });
+      socket.on('logout', function(params){
+        params.socket_id = socket.id
+        //params.socket = socket
+        console.log("params",params)
+        core.user.logout(params)
+      });
+
       // Levelgraph
       // socket.on('put', (thing) => {
       //   console.log(thing)

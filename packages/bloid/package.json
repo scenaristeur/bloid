@@ -1,6 +1,7 @@
 {
   "name": "bloid",
   "description": "",
+  "version": "0.0.0",
   "main": "index.js",
   "type": "module",
   "bin": {
@@ -16,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "bloid-core": "*",
+    "bloid-template": "^0.0.0",
+    "bloid-user": "^0.0.0",
     "conf": "^10.1.2"
   },
   "nx": {

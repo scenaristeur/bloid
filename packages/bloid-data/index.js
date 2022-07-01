@@ -127,9 +127,10 @@ class BloidData extends BloidTemplate{
       let p_o = {
         action: "ld_object",
         obj: obj,
-        err : err
+        err : err,
       }
-      module.core.io.emit('ld_crud', p_o)
+      params = Object.assign(params, p_o)
+      module.core.io.emit('ld_crud', params)
       // do something after the obj is inserted
     });
   }
@@ -187,7 +188,10 @@ class BloidData extends BloidTemplate{
       const socket = module.core.io.sockets.sockets.get(params.socket_id);
 
       console.log(params)
-      socket.emit('ld_crud', params)
+      if (params.callback == undefined){
+        socket.emit('ld_crud', params)
+      }
+
 
       let known = []
       result.map(r => {
@@ -200,9 +204,10 @@ class BloidData extends BloidTemplate{
             let p_o = {
               action: "ld_object",
               obj: obj,
-              err : err
+              err : err,
             }
-            socket.emit('ld_crud', p_o)
+            params = Object.assign(params, p_o)
+            socket.emit('ld_crud', params)
           })
         }
       });

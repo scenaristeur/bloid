@@ -48,7 +48,22 @@ let wikidata_context = {
     "description": "https://www.wikidata.org/wiki/Q1200750",
     "version": "https://www.wikidata.org/wiki/Q20826013",
     "creator": "https://www.wikidata.org/wiki/Q2500638",
-    //  "@base": "https://www.wikidata.org/wiki/"
+    "source": "https://www.wikidata.org/wiki/Q3523102",
+    "@base": "https://www.wikidata.org/wiki/"
+  }
+}
+
+
+let bloid_context = {
+  "@context": {
+    "@vocab": "https://scenaristeur/github.io/bloid/",
+    "name": "https://www.wikidata.org/wiki/Q82799",
+    "type": "https://www.wikidata.org/wiki/Q21146257",
+    "description": "https://www.wikidata.org/wiki/Q1200750",
+    "version": "https://www.wikidata.org/wiki/Q20826013",
+    "creator": "https://www.wikidata.org/wiki/Q2500638",
+    "source": "https://www.wikidata.org/wiki/Q3523102",
+    "@base": "https://scenaristeur/github.io/bloid/"
   }
 }
 
@@ -95,6 +110,9 @@ class BloidData extends BloidTemplate{
       case 'getById':
       this.getById(params)
       break;
+      case 'addLinks':
+      this.addLinks(params)
+      break;
       case 'read':
 
       break;
@@ -107,6 +125,76 @@ class BloidData extends BloidTemplate{
       default:
 
     }
+  }
+
+
+  addLinks(params){
+    console.log("!!! Add links", params)
+    console.log('db', this.db)
+    console.log('dbjsonld', this.db.jsonld)
+    let db = this.db
+
+
+    params.subjects.forEach((subject) => {
+
+      params.predicates.forEach((predicate) => {
+        params.objects.forEach((object) => {
+          console.log("-----------------\n",subject,predicate, object)
+          // let l = {source: subject['@id'] || subject.text, label: predicate['@id'] || predicate.text, target: object['@id'] || object.text}
+          // links.push(l)
+          // // ajout graphData
+          // this.$store.commit('graph/addLink', l)
+
+          /// ???? USING DB ? CAN BE AN OPTION
+          // db.get(subject['@id'], wikidata_context, function(err,obj) {
+          //   // obj will be the very same of the manu object
+          //   console.log("err", err, "obj",obj)
+          // })
+          //let key =  predicate['@id'] || predicate.text
+          let key = predicate['@id'] || 'https://scenaristeur/github.io/bloid/'+predicate.text
+
+          let data = subject
+          data[key] = object
+
+          console.log('adding', data)
+
+          db.jsonld.put(data, {base: 'https://scenaristeur/github.io/bloid/'}, function(errP,objP) {
+            // obj will be the very same of the manu object
+            console.log("errP", errP, "objP",objP)
+
+            db.jsonld.get(data['@id'], wikidata_context, function(errG,objG) {
+              console.log("errG", errG, "objG",objG)
+              // obj will be the very same of the manu object
+
+              // let p_o = {
+              //   action: "ld_object",
+              //   obj: obj,
+              //   err : err,
+              // }
+              // params = Object.assign(params, p_o)
+              // socket.emit('ld_crud', params)
+            })
+
+            // let p_o = {
+            //   action: "ld_object",
+            //   obj: obj,
+            //   err : err,
+            // }
+            // params = Object.assign(params, p_o)
+            // socket.emit('ld_crud', params)
+          })
+
+
+
+
+
+        });
+      });
+    });
+
+
+
+
   }
 
 
